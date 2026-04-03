@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenLensAI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/chat.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <button class="sidebar-toggle floating" id="sidebarToggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="sidebar-logo"> <i class="fa-solid fa-seedling"></i> </div>
+        <div class="sidebar-brand">GreenLensAI</div>
+
+        <!-- New Chat Button -->
+        <div class="sidebar-new-chat">
+            <button id="newChatBtn" class="new-chat-btn">
+                <i class="fa-solid fa-plus"></i>
+                <span>New Chat</span>
+            </button>
+        </div>
+
+        <!-- Chat History Section -->
+        <div class="sidebar-history">
+            <div class="history-label">Recent Chats</div>
+            <div id="historyList" class="history-list">
+                <!-- History items will be injected here -->
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+    <main class="main-content">
+        <div class="top-bar">
+            <span>GreenLensAI 1.0 &nbsp;<i class="fa-solid fa-seedling"></i></span>
+            <button id="mobileNewChatBtn" class="mobile-new-chat-btn">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </div>
+        <div class="chat-container" id="chatContainer">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-logo"> <i class="fa-solid fa-seedling"></i> </div>
+                <h1 class="welcome-title">GreenLensAI</h1>
+                <div class="suggestion-grid">
+                    <div class="suggestion-card" onclick="setInput('How do I treat leaf rust on wheat?')">
+                        <div class="suggestion-title">Crop Disease</div>
+                        <div class="suggestion-desc">"How do I treat leaf rust on wheat?"</div>
+                    </div>
+                    <div class="suggestion-card" onclick="setInput('Suggest sustainable irrigation methods.')">
+                        <div class="suggestion-title">Sustainability</div>
+                        <div class="suggestion-desc">"Suggest sustainable irrigation methods."</div>
+                    </div>
+                    <div class="suggestion-card" onclick="setInput('Identify this plant from a description.')">
+                        <div class="suggestion-title">Identification</div>
+                        <div class="suggestion-desc">"Identify this plant from a description."</div>
+                    </div>
+                    <div class="suggestion-card" onclick="setInput('Calculate fertilizer ratio for 5 acres.')">
+                        <div class="suggestion-title">Calculator</div>
+                        <div class="suggestion-desc">"Calculate fertilizer ratio for 5 acres."</div>
+                    </div>
+                </div>
+            </div>
+            <div id="messagesList" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            </div>
+        </div>
+        <div class="input-area">
+            <div class="input-container">
+                <!-- User Input -->
+                <input type="text" id="userInput" class="chat-input" placeholder="Ask to GreenLensAI..."
+                    autocomplete="off">
+                <!-- Language Dropdown -->
+                <select id="languageSelect" class="language-dropdown">
+                    <option value="" selected disabled>Your Voice</option>
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="it">Italian</option>
+                    <option value="ru">Russian</option>
+                </select>
+
+
+                <!-- Attachment Section -->
+                <div class="attach-wrapper">
+                    <button class="attach-btn" id="attachBtn">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+
+                    <div class="attach-dropdown" id="attachDropdown">
+                        <label class="Upload-file">
+                            <i class="fa-solid fa-file-arrow-up"></i>
+                            Upload File
+                            <input type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" hidden>
+                            <span id="selectedFileName" class="file-name-display"></span>
+                        </label>
+
+                        <label class="Take-photo" onclick="openCamera()">
+                            <i class="fa-solid fa-camera"></i>
+                            Take Photo
+                        </label>
+
+                        <video id="camera" autoplay playsinline hidden></video>
+                        <canvas id="snapshot" hidden></canvas>
+
+                        <button onclick="capturePhoto()" hidden id="captureBtn" class="Capture-btn">Capture</button>
+                    </div>
+                </div>
+
+                <!-- Send Button -->
+                <button class="send-btn" id="sendBtn">
+                    <i class="fa-regular fa-paper-plane"></i>
+                </button>
+
+                <!-- Disclaimer -->
+                <div class="disclaimer">
+                    GreenLensAI can make mistakes. Consider checking important crop info.
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script src="./assets/js/chat.js"> // Select all elements once</script>
+    <script src="./assets/js/image-upload.js"></script>
+</body>
+
+</html>

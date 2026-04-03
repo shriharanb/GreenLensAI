@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Recovery | GreenLensAI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/account-recovery.css">
+
+</head>
+<body>
+
+<div class="recovery-card">
+    <div class="logo">
+        <i class="fas fa-seedling"></i>
+    </div>
+
+    <div class="title">GreenLensAI</div>
+    <div class="subtitle">Secure account recovery for smart farming</div>
+
+    <div class="option" id="idOption" onclick="selectOption('id')">
+        <i class="fa-solid fa-id-card-clip"></i>
+        <div>
+            <h4>Recover My Farmer ID</h4>
+            <p>I forgot my unique identity code</p>
+        </div>
+    </div>
+
+    <div class="option" id="passwordOption" onclick="selectOption('password')">
+        <i class="fa-solid fa-key"></i>
+        <div>
+            <h4>Recover My Password</h4>
+            <p>I want to change my security password</p>
+        </div>
+    </div>
+
+    <button class="send-btn" onclick="proceed()">
+        <span>Continue</span> 
+        <i class="fa-regular fa-paper-plane"></i>
+    </button>
+
+    <div class="footer-text">
+        Growing trust with secure digital agriculture
+    </div>
+    <div class="login-link">Back to Login? <a href="../Pages/login.html">Login</a></div>
+</div>
+
+<script src="../assets/js/account-recovery.js"></script>
+
+</body>
+</html>

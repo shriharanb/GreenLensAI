@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenLens Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="logo-icon">
+            <i class="fas fa-seedling"></i>
+        </div>
+
+        <h2>GreenLensAI</h2>
+        <p class="subtitle">Healthy Crops for Future</p>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="username">Farmer ID / Email</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-user-circle"></i>
+                    <input type="text" id="username" placeholder="Enter your ID" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" class="password-input" placeholder="Enter password" required>
+                    <i class="fas fa-eye-slash toggle-password" id="togglePassword"></i>
+                </div>
+            </div>
+
+            <button type="submit" class="login-btn">Consult GreenLensAI
+                <i class="fas fa-stethoscope" style="margin-right: 8px;"></i>
+            </button>
+        </form>
+
+        <div id="message"></div>
+
+        <div class="footer-links">
+            <a href="../Pages/account-recovery.html">Forgot Something?</a>
+            <a href="../Pages/register.html">New Farmer? <b>Join Us</b></a>
+        </div>
+    </div>
+
+    <script src="../assets/js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+nohup: ignoring input
+🚀 Training on: cpu
+⚠️ Sampling up to 300 images per class for training...
+📍 Training Subset Size: 2684
+🏗️ Creating MobileNetV2 model...
+
+Epoch 1/10
+  Batch 0/168 - Loss: 2.4330
+  Batch 10/168 - Loss: 2.0183
+  Batch 20/168 - Loss: 1.6051
+  Batch 30/168 - Loss: 1.8375
+  Batch 40/168 - Loss: 1.2510
+  Batch 50/168 - Loss: 1.4746
+  Batch 60/168 - Loss: 1.0363
+  Batch 70/168 - Loss: 0.9713
+  Batch 80/168 - Loss: 1.9051
+  Batch 90/168 - Loss: 1.0178
+  Batch 100/168 - Loss: 1.1312
+  Batch 110/168 - Loss: 0.8783
+  Batch 120/168 - Loss: 1.3114
+  Batch 130/168 - Loss: 1.5056
+  Batch 140/168 - Loss: 1.3138
+  Batch 150/168 - Loss: 1.2437
+  Batch 160/168 - Loss: 0.6407
+⭐ Val Accuracy: 66.95%
+✅ Best Model Saved with 66.95% accuracy
+
+Epoch 2/10
+  Batch 0/168 - Loss: 0.6144
+  Batch 10/168 - Loss: 0.8755
+  Batch 20/168 - Loss: 0.9474
+  Batch 30/168 - Loss: 0.7269
+  Batch 40/168 - Loss: 1.2207
+  Batch 50/168 - Loss: 0.6729
+  Batch 60/168 - Loss: 1.1900
+  Batch 70/168 - Loss: 1.0281
+  Batch 80/168 - Loss: 1.4645
+  Batch 90/168 - Loss: 1.1799
+  Batch 100/168 - Loss: 0.9354
+  Batch 110/168 - Loss: 1.0386
+  Batch 120/168 - Loss: 0.7739
+  Batch 130/168 - Loss: 1.4515
+  Batch 140/168 - Loss: 0.8496
+  Batch 150/168 - Loss: 0.5807
+  Batch 160/168 - Loss: 0.7811
+⭐ Val Accuracy: 69.92%
+✅ Best Model Saved with 69.92% accuracy
+
+Epoch 3/10
+  Batch 0/168 - Loss: 1.0278
+  Batch 10/168 - Loss: 0.7704
+  Batch 20/168 - Loss: 1.5207
+  Batch 30/168 - Loss: 0.7235
+  Batch 40/168 - Loss: 0.7468
+  Batch 50/168 - Loss: 0.4635
+  Batch 60/168 - Loss: 0.4159
+  Batch 70/168 - Loss: 0.2667
+  Batch 80/168 - Loss: 0.6876
+  Batch 90/168 - Loss: 0.3526
+  Batch 100/168 - Loss: 0.7371
+  Batch 110/168 - Loss: 1.1861
+  Batch 120/168 - Loss: 1.1610
+  Batch 130/168 - Loss: 0.7543
+  Batch 140/168 - Loss: 0.6114
+  Batch 150/168 - Loss: 0.9610
+  Batch 160/168 - Loss: 0.7259
+⭐ Val Accuracy: 68.77%
+
+Epoch 4/10
+  Batch 0/168 - Loss: 0.6285
+  Batch 10/168 - Loss: 1.2316
+  Batch 20/168 - Loss: 0.8961
+  Batch 30/168 - Loss: 1.0375
+  Batch 40/168 - Loss: 0.9429
+  Batch 50/168 - Loss: 0.4184
+  Batch 60/168 - Loss: 1.3589
+  Batch 70/168 - Loss: 0.5955
+  Batch 80/168 - Loss: 0.8039
+  Batch 90/168 - Loss: 1.0453
+  Batch 100/168 - Loss: 0.8607
+  Batch 110/168 - Loss: 0.6067
+  Batch 120/168 - Loss: 0.5039
+  Batch 130/168 - Loss: 0.4790
+  Batch 140/168 - Loss: 0.8160
+  Batch 150/168 - Loss: 0.3583
+  Batch 160/168 - Loss: 1.0873
+⭐ Val Accuracy: 77.67%
+✅ Best Model Saved with 77.67% accuracy
+
+Epoch 5/10
+  Batch 0/168 - Loss: 0.2261
+  Batch 10/168 - Loss: 0.7675
+  Batch 20/168 - Loss: 0.5771
+  Batch 30/168 - Loss: 0.4026
+  Batch 40/168 - Loss: 0.9815
+  Batch 50/168 - Loss: 0.6319
+  Batch 60/168 - Loss: 1.4682
+  Batch 70/168 - Loss: 0.6227
+  Batch 80/168 - Loss: 0.8961
+  Batch 90/168 - Loss: 1.4404
+  Batch 100/168 - Loss: 0.8391
+  Batch 110/168 - Loss: 0.7416
+  Batch 120/168 - Loss: 0.6748
+  Batch 130/168 - Loss: 0.5786
+  Batch 140/168 - Loss: 0.6320
+  Batch 150/168 - Loss: 0.5199
+  Batch 160/168 - Loss: 0.7038
+⭐ Val Accuracy: 77.10%
+
+Epoch 6/10
+  Batch 0/168 - Loss: 0.5519
+  Batch 10/168 - Loss: 0.3664
+  Batch 20/168 - Loss: 0.3749
+  Batch 30/168 - Loss: 0.5324
+  Batch 40/168 - Loss: 0.4920
+  Batch 50/168 - Loss: 0.5803
+  Batch 60/168 - Loss: 0.7515
+  Batch 70/168 - Loss: 0.3807
+  Batch 80/168 - Loss: 0.6813
+  Batch 90/168 - Loss: 0.8700
+  Batch 100/168 - Loss: 0.7123
+  Batch 110/168 - Loss: 0.8693
+  Batch 120/168 - Loss: 0.6488
+  Batch 130/168 - Loss: 0.4048
+  Batch 140/168 - Loss: 0.2594
+  Batch 150/168 - Loss: 0.6059
+  Batch 160/168 - Loss: 1.1189
+⭐ Val Accuracy: 81.17%
+✅ Best Model Saved with 81.17% accuracy
+
+Epoch 7/10
+  Batch 0/168 - Loss: 1.0709
+  Batch 10/168 - Loss: 0.3221
+  Batch 20/168 - Loss: 0.4630
+  Batch 30/168 - Loss: 0.5206
+  Batch 40/168 - Loss: 0.5706
+  Batch 50/168 - Loss: 0.3026
+  Batch 60/168 - Loss: 0.3163
+  Batch 70/168 - Loss: 0.4227
+  Batch 80/168 - Loss: 0.6782
+  Batch 90/168 - Loss: 0.6450
+  Batch 100/168 - Loss: 0.7495
+  Batch 110/168 - Loss: 0.5341
+  Batch 120/168 - Loss: 0.7694
+  Batch 130/168 - Loss: 0.3755
+  Batch 140/168 - Loss: 0.6086
+  Batch 150/168 - Loss: 0.8786
+  Batch 160/168 - Loss: 0.9390
+⭐ Val Accuracy: 80.24%
+
+Epoch 8/10
+  Batch 0/168 - Loss: 0.2490
+  Batch 10/168 - Loss: 0.6678
+  Batch 20/168 - Loss: 0.6110
+  Batch 30/168 - Loss: 0.5993
+  Batch 40/168 - Loss: 0.6294
+  Batch 50/168 - Loss: 0.4133
+  Batch 60/168 - Loss: 0.3961
+  Batch 70/168 - Loss: 0.6486
+  Batch 80/168 - Loss: 0.9760
+  Batch 90/168 - Loss: 0.5595
+  Batch 100/168 - Loss: 0.8358
+  Batch 110/168 - Loss: 0.3223
+  Batch 120/168 - Loss: 0.4960
+  Batch 130/168 - Loss: 0.7260
+  Batch 140/168 - Loss: 0.4712
+  Batch 150/168 - Loss: 0.3235
+  Batch 160/168 - Loss: 0.3119
+⭐ Val Accuracy: 84.60%
+✅ Best Model Saved with 84.60% accuracy
+
+Epoch 9/10
+  Batch 0/168 - Loss: 0.3388
+  Batch 10/168 - Loss: 0.2603
+  Batch 20/168 - Loss: 0.5667
+  Batch 30/168 - Loss: 0.5721
+  Batch 40/168 - Loss: 0.3055
+  Batch 50/168 - Loss: 0.2895
+  Batch 60/168 - Loss: 0.3425
+  Batch 70/168 - Loss: 0.2575
+  Batch 80/168 - Loss: 0.1930
+  Batch 90/168 - Loss: 0.5065
+  Batch 100/168 - Loss: 0.4349
+  Batch 110/168 - Loss: 0.1976
+  Batch 120/168 - Loss: 0.2859
+  Batch 130/168 - Loss: 0.5337
+  Batch 140/168 - Loss: 0.3248
+  Batch 150/168 - Loss: 0.2206
+  Batch 160/168 - Loss: 0.6358
+⭐ Val Accuracy: 81.24%
+
+Epoch 10/10
+  Batch 0/168 - Loss: 0.3747
+  Batch 10/168 - Loss: 0.3670
+  Batch 20/168 - Loss: 0.6828
+  Batch 30/168 - Loss: 0.6258
+  Batch 40/168 - Loss: 0.5511
+  Batch 50/168 - Loss: 0.9115
+  Batch 60/168 - Loss: 1.0459
+  Batch 70/168 - Loss: 0.4043
+  Batch 80/168 - Loss: 0.6432
+  Batch 90/168 - Loss: 0.2717
+  Batch 100/168 - Loss: 0.8435
+  Batch 110/168 - Loss: 0.2164
+  Batch 120/168 - Loss: 0.1897
+  Batch 130/168 - Loss: 0.4090
+  Batch 140/168 - Loss: 0.5009
+  Batch 150/168 - Loss: 1.0109
+  Batch 160/168 - Loss: 0.4749
+⭐ Val Accuracy: 83.42%
+
+🎉 Training Complete!

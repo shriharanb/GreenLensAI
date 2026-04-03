@@ -1,0 +1,28 @@
+🚀 Training on: cpu
+⚠️ Mini-mode: Sampling 100 images per class for training...
+📍 Mini Training Size: 1041
+🏗️ Creating MobileNetV2 model...
+
+Epoch 1/2
+  Batch 0/66 - Loss: 2.4430
+  Batch 10/66 - Loss: 2.1652
+  Batch 20/66 - Loss: 1.3303
+  Batch 30/66 - Loss: 1.3502
+  Batch 40/66 - Loss: 1.4460
+  Batch 50/66 - Loss: 1.1009
+  Batch 60/66 - Loss: 0.9646
+⭐ Val Accuracy: 46.16%
+✅ Best Model Saved with 46.16% accuracy
+
+Epoch 2/2
+  Batch 0/66 - Loss: 1.3560
+  Batch 10/66 - Loss: 1.3222
+  Batch 20/66 - Loss: 0.9661
+  Batch 30/66 - Loss: 1.0790
+  Batch 40/66 - Loss: 0.6934
+  Batch 50/66 - Loss: 1.4397
+  Batch 60/66 - Loss: 1.4731
+⭐ Val Accuracy: 57.48%
+✅ Best Model Saved with 57.48% accuracy
+
+🎉 Training Complete!

@@ -1,0 +1,208 @@
+/* --- CSS STYLES --- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    /* Background: A high-quality agriculture image with a dark overlay for readability */
+    background: url("../images/loginwall.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.95);
+    width: 380px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 25px rgba(87, 201, 72, 0.4);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 6px solid #4CAF50;
+    animation: fadeIn 1s ease;
+    /* Green accent bottom */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Decorative Leaf Icon at top */
+.logo-icon {
+    font-size: 50px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+h2 {
+    color: #2E7D32;
+    /* Dark Green */
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+p.subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+/* Input Fields Styling */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    color: #2E7D32;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-wrapper i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4CAF50;
+    font-size: 16px;
+    z-index: 5;
+    pointer-events: none; /* Let clicks pass through to input or toggle */
+}
+
+.input-wrapper i.fa-user-circle,
+.input-wrapper i.fa-lock {
+    left: 15px;
+}
+
+.input-wrapper i.toggle-password {
+    left: auto;
+    right: 15px;
+    color: #4CAF50;
+    pointer-events: auto; /* Allow clicking the toggle */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 40px 12px 40px; /* Even padding for icons on both sides */
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    outline: none;
+    transition: all 0.3s;
+    background-color: #f9fff9;
+    font-size: 14px;
+}
+
+.input-group input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.2);
+}
+
+.input-wrapper .toggle-password:hover {
+    color: #2E7D32;
+}
+
+.input-group input.password-input {
+    padding-right: 45px; /* Extra space for the eye icon */
+}
+
+/* Button Styling */
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #2E7D32, #4CAF50);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 125, 50, 0.4);
+}
+
+.login-btn:active {
+    transform: scale(0.98);
+}
+
+/* Footer Links */
+.footer-links {
+    margin-top: 20px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #4CAF50;
+}
+
+/* Simple Floating Animation for the Leaf */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Message Area */
+#message {
+    margin-top: 15px;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}

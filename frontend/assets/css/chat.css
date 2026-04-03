@@ -1,0 +1,739 @@
+:root {
+    /* Agriculture Theme Palette */
+    --bg-sidebar: #05180b;
+    /* Very dark green */
+    --bg-main: #0b2212;
+    /* Dark forest green */
+    --bg-card: #15331f;
+    /* Lighter green for cards */
+    --text-primary: #e0f2e3;
+    --text-secondary: #8da693;
+    --accent-green: #2ecc71;
+    /* Vibrant leaf green */
+    --accent-glow: rgba(46, 204, 113, 0.4);
+    --input-bg: #1a3c26;
+    --border-color: #264a30;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-right: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+    position: relative;
+    /* for footer positioning if needed, or use justify-content */
+}
+
+/* Sidebar History List */
+.sidebar-history {
+    width: 100%;
+    margin-top: 30px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.history-item {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.history-item-title i {
+    color: var(--accent-green);
+    font-size: 0.8rem;
+}
+
+.history-item:hover {
+    background-color: var(--input-bg);
+    border-color: var(--accent-green);
+    transform: translateX(3px);
+}
+
+.history-item.active {
+    background-color: var(--input-bg);
+    border-color: var(--accent-green);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* History item layout for title + delete */
+.history-item-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* Delete button - always visible */
+.history-delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.history-delete-btn:hover {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.15);
+    transform: scale(1.15);
+}
+
+/* New Chat Button Styling */
+.sidebar-new-chat {
+    width: 100%;
+    padding: 0 5px;
+    margin-top: 20px;
+}
+
+.new-chat-btn {
+    width: 100%;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.new-chat-btn:hover {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.5);
+}
+
+.new-chat-btn:active {
+    transform: translateY(0);
+}
+
+.new-chat-btn i {
+    font-size: 1rem;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: rgba(231, 76, 60, 0.1);
+    border: 1px solid rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
+}
+
+/* The requested Plant Logo only */
+.sidebar-logo {
+    margin-top: 20px;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px var(--accent-glow);
+    animation: breathe 3s infinite ease-in-out;
+    cursor: pointer;
+}
+
+.sidebar-logo i {
+    font-size: 40px;
+    color: #fff;
+}
+
+/* Small version text below logo */
+.sidebar-brand {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    /* Gradient text */
+    background: linear-gradient(to right, #fff, #2ecc71);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+/* --- MAIN CHAT AREA --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: radial-gradient(circle at top right, #10301a 0%, var(--bg-main) 60%);
+}
+
+/* Header (Cleaned as requested) */
+.top-bar {
+    width: 100%;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    /* Adjusted for mobile button */
+    align-items: center;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.mobile-new-chat-btn {
+    display: none;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px var(--accent-glow);
+    transition: all 0.3s ease;
+}
+
+.mobile-new-chat-btn:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .mobile-new-chat-btn {
+        display: flex;
+    }
+
+    .top-bar {
+        justify-content: space-between !important;
+    }
+}
+
+/* Chat Display Area */
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 20px 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-behavior: smooth;
+}
+
+/* Welcome / Empty State */
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.welcome-logo {
+    font-size: 60px;
+    color: var(--accent-green);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 15px var(--accent-glow));
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    /* Fallback for all browsers */
+    color: #ffffff;
+    /* Gradient text */
+    background: linear-gradient(to right, #fff, #2ecc71);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Suggestion Grid */
+.suggestion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 700px;
+}
+
+.suggestion-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.suggestion-card:hover {
+    background-color: var(--input-bg);
+    border-color: var(--accent-green);
+}
+
+.suggestion-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.suggestion-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* --- INPUT AREA --- */
+.input-area {
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(to top, var(--bg-main) 80%, transparent);
+}
+
+.input-container {
+    width: 100%;
+    max-width: 768px;
+    position: relative;
+}
+
+.chat-input {
+    width: 100%;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 30px;
+    padding: 16px 50px 16px 25px;
+    /* Right padding for button */
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    resize: none;
+    height: 56px;
+    line-height: 24px;
+}
+
+.chat-input:focus {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.send-btn {
+    position: absolute;
+    right: 15px;
+    top: 35%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 1.3rem;
+    transition: color 0.2s;
+}
+
+.attach-dropdown {
+    width: 100%;
+    max-width: 360px;
+    /* 🔑 SAME SIZE for dropdown & camera */
+    box-sizing: border-box;
+}
+
+.Upload-file {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#camera {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    /* mobile camera look */
+    object-fit: cover;
+    border-radius: 10px;
+    background: #000;
+    margin-top: 8px;
+}
+
+.attach-item,
+.Take-photo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    /* 🔑 match dropdown width */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.Capture-btn {
+    width: 100%;
+    margin-top: 10px;
+    /* ✅ creates proper space */
+    margin-bottom: 5px;
+    position: static;
+    /* allow normal flow */
+    font-size: 16px;
+    font-display: block;
+    border-color: #27ae60;
+    background-color: #27ae60;
+    border-radius: 20px;
+    opacity: 0.9;
+    padding: 3px;
+}
+
+.disclaimer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 12px;
+}
+
+/* Chat Message Bubbles (For JS interaction) */
+.message {
+    width: 100%;
+    max-width: 768px;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.message.user {
+    background-color: transparent;
+}
+
+.message.bot {
+    background-color: rgba(46, 204, 113, 0.05);
+    border-radius: 8px;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar.user-av {
+    background: #555;
+}
+
+.avatar.bot-av {
+    background: var(--accent-green);
+}
+
+.message-content {
+    line-height: 1.6;
+    padding-top: 2px;
+}
+
+/* Animations */
+@keyframes breathe {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(46, 204, 113, 0.6);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+        /* Hidden on mobile for simplicity as requested */
+    }
+
+    .suggestion-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.language-dropdown {
+    position: absolute;
+    right: 90px;
+    top: 34%;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    border-radius: 30px;
+
+    /* Glass effect */
+    background-color: #1a3c26;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: #1a3c26;
+    box-shadow: 0 3px 52px rgba(0, 0, 0, 0.25);
+
+    color: #2ecc71;
+    font-size: 1rem;
+    cursor: pointer;
+    opacity: 0.95;
+
+    /* Remove default styling */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Optional: hover effect */
+.language-dropdown:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/* ⚠️ Limited browser support */
+.language-dropdown option {
+    background-color: #e6f6ee;
+    color: #0c0e0d;
+}
+
+
+/* Attachment Dropdown */
+.attach-wrapper {
+    position: absolute;
+    right: 55px;
+    top: 35%;
+    transform: translateY(-50%);
+}
+
+.attach-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.attach-btn:hover {
+    color: var(--accent-green);
+}
+
+.attach-dropdown {
+    position: absolute;
+    bottom: 45px;
+    right: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: none;
+    min-width: 160px;
+    z-index: 10;
+}
+
+.attach-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.attach-item:hover {
+    background: var(--input-bg);
+}
+
+.send-btn:hover {
+    color: var(--accent-green);
+}
+
+/* Floating Sidebar Toggle Button */
+.sidebar-toggle.floating {
+    position: relative;
+    margin-right: 350px;
+    background: transparent;
+    border: 0px solid #264a30;
+    color: #264a30;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 0 0 transparent;
+}
+
+.sidebar-toggle.floating:hover {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+/* Sidebar closed state */
+.sidebar.closed {
+    transform: translateX(-200px);
+}
+
+/* Desktop position adjustment */
+@media (min-width: 769px) {
+    .sidebar-toggle.floating {
+        left: 270px;
+    }
+
+    .sidebar.closed~.sidebar-toggle.floating {
+        left: 200px;
+    }
+}
+
+/* ===============================
+   GROW + RIPPLE CARD ANIMATION
+   PASTE AT END OF <style>
+   =============================== */
+
+/* Initial grow state */
+.suggestion-card {
+    opacity: 0;
+    transform: scale(0.85);
+    animation: growIn 0.9s cubic-bezier(.34, 1.56, .64, 1) forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Staggered growth */
+.suggestion-card:nth-child(1) {
+    animation-delay: 0.15s;
+}
+
+.suggestion-card:nth-child(2) {
+    animation-delay: 0.30s;
+}
+
+.suggestion-card:nth-child(3) {
+    animation-delay: 0.45s;
+}
+
+.suggestion-card:nth-child(4) {
+    animation-delay: 0.60s;
+}
+
+/* Ripple glow layer */
+.suggestion-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center,
+            rgba(46, 204, 113, 0.25),
+            transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Hover pulse */
+.suggestion-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(46, 204, 113, 0.35);
+}
+
+/* Ripple appears on hover */
+.suggestion-card:hover::after {
+    opacity: 1;
+}
+
+/* Keyframes */
+@keyframes growIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Basic Navbar Styling */
+.navbar {
+    list-style-type: none;
+    background-color: #333;
+    padding: 0;
+    display: flex;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+}

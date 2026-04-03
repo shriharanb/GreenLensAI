@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Verification | GreenLensAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/id-recovery.css">
+</head>
+
+<body>
+
+    <div class="recovery-card">
+        <div class="logo">
+            <i class="fas fa-shield-halved"></i>
+        </div>
+
+        <div class="title">Farmer ID Recovery</div>
+        <p class="subtitle">Provide your details to recover your unique Farmer ID</p>
+
+        <div class="input-container">
+            <i class="fa-solid fa-phone input-icon"></i>
+            <input type="tel" id="phone" placeholder="Enter your registered phone number" required>
+        </div>
+
+        <div class="question-container">
+            <span class="question-label">Security Question</span>
+            <p class="display-question" id="securityQuestion">What's your favourite food?</p>
+        </div>
+
+        <div class="input-container">
+            <i class="fa-solid fa-pen-to-square input-icon"></i>
+            <input type="text" id="userAnswer" placeholder="Type your answer here..." required>
+        </div>
+
+        <button class="verify-btn" onclick="verifyPhoneRecovery()">
+            <span>Verify Identity</span>
+            <i class="fa-solid fa-circle-check"></i>
+        </button>
+
+        <a href="account-recovery.html" class="back-link">Cancel</a>
+    </div>
+
+    <script src="../assets/js/id-recovery.js"></script>
+
+</body>
+
+</html>

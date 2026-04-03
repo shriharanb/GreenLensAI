@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Admin | GreenLensAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #1b5e20;
+            --green-light: #4caf50;
+            --green-soft: #e8f5e9;
+            --bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .admin-card {
+            background: #fff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 50px;
+            color: var(--green-light);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: var(--green-dark);
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .upload-area {
+            border: 2px dashed #ccc;
+            padding: 30px;
+            border-radius: 15px;
+            transition: 0.3s;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .upload-area:hover {
+            border-color: var(--green-light);
+            background: var(--green-soft);
+        }
+
+        #pdfInput {
+            display: none;
+        }
+
+        .btn-index {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: var(--green-dark);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-index:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        #status,
+        #loginStatus {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .success {
+            color: #2e7d32;
+        }
+
+        .error {
+            color: #d32f2f;
+        }
+
+        .loading {
+            color: #1976d2;
+        }
+
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* User Table Styles */
+        .admin-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 10px 40px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            overflow-y: auto;
+            max-height: calc(100vh - 100px);
+        }
+
+        .users-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: left;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th {
+            background: var(--green-soft);
+            color: var(--green-dark);
+            text-align: left;
+            padding: 12px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+        }
+
+        tr:hover {
+            background: #fdfdfd;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-staff {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .badge-user {
+            background: #f1f8e9;
+            color: #388e3c;
+        }
+
+        .refresh-btn {
+            background: none;
+            border: 1px solid var(--green-light);
+            color: var(--green-light);
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .refresh-btn:hover {
+            background: var(--green-soft);
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #d32f2f;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px;
+            transition: 0.2s;
+        }
+
+        .delete-btn:hover {
+            color: #b71c1c;
+            transform: scale(1.1);
+        }
+
+        .delete-btn:disabled {
+            color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loginOverlay">
+        <div class="admin-card" style="max-width: 400px;">
+            <i class="fas fa-user-shield logo"></i>
+            <h2>Admin Authentication</h2>
+            <p>Please enter your credentials to access the RAG system.</p>
+
+            <input type="text" id="adminUser" placeholder="Admin ID" class="login-input">
+            <input type="password" id="adminPass" placeholder="Password" class="login-input">
+
+            <button class="btn-index" onclick="loginAdmin()">Verify & Enter</button>
+            <div id="loginStatus"></div>
+        </div>
+    </div>
+
+    <div class="admin-nav" id="adminNavBar" style="display: none;">
+        <div style="font-weight: 600; color: var(--green-dark);">
+            <i class="fas fa-leaf"></i> GreenLens Admin
+        </div>
+        <a href="login.html" style="color: #666; text-decoration: none; font-size: 14px;"
+            onclick="sessionStorage.removeItem('adminAuth')">
+            <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+    </div>
+
+    <div class="main-container" id="mainContent" style="display: none;">
+        <!-- RAG Section -->
+        <div class="admin-card" style="margin: 0 auto;">
+            <div class="logo">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <h2>RAG Indexing System</h2>
+            <p>Upload your diseases solution PDF to train the AI</p>
+
+            <div class="upload-area" onclick="document.getElementById('pdfInput').click()">
+                <i class="fas fa-file-pdf" style="font-size: 40px; color: #d32f2f; margin-bottom: 10px;"></i>
+                <div id="fileName">No file selected</div>
+                <input type="file" id="pdfInput" accept=".pdf">
+            </div>
+
+            <button id="indexBtn" class="btn-index" onclick="startIndexing()" disabled>
+                Index Solutions
+            </button>
+
+            <div id="status"></div>
+
+            <!-- Indexed PDFs List -->
+            <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; text-align: left;">
+                <h3 style="color: var(--green-dark); margin-bottom: 15px; font-size: 16px;">
+                    <i class="fas fa-database"></i> Currently Indexed Documents
+                    <button class="refresh-btn" onclick="fetchIndexedPdfs()" style="float: right;">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </h3>
+                <ul id="indexedPdfsList" style="list-style: none; padding: 0; margin: 0; font-size: 14px;">
+                    <li style="color: #999; text-align: center; padding: 10px;">Loading indexed documents...</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Users Section -->
+        <div class="users-section">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="margin: 0; color: var(--green-dark);">Registered Farmers</h3>
+                <button class="refresh-btn" onclick="fetchUsers()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Farmer ID</th>
+                            <th>Phone Number</th>
+                            <th>Status</th>
+                            <th>Joined On</th>
+                            <th style="text-align: center;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <!-- Users will be loaded here -->
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 20px; color: #999;">
+                                Loading users...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pdfInput = document.getElementById('pdfInput');
+        const fileNameDisplay = document.getElementById('fileName');
+        const indexBtn = document.getElementById('indexBtn');
+        const statusDiv = document.getElementById('status');
+        const loginOverlay = document.getElementById('loginOverlay');
+        const adminNavBar = document.getElementById('adminNavBar');
+        const mainContent = document.getElementById('mainContent');
+
+        function showDashboard() {
+            loginOverlay.style.display = 'none';
+            adminNavBar.style.display = 'flex';
+            mainContent.style.display = 'flex';
+            document.body.style.overflow = 'auto';
+            fetchUsers();
+            fetchIndexedPdfs();
+        }
+
+        if (sessionStorage.getItem('adminAuth') === 'true') {
+            showDashboard();
+        }
+
+        async function loginAdmin() {
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+            const loginStatus = document.getElementById('loginStatus');
+
+            if (!user || !pass) {
+                loginStatus.innerHTML = '<span class="error">Please enter both ID and Password</span>';
+                return;
+            }
+
+            loginStatus.innerHTML = '<span class="loading"><i class="fas fa-spinner fa-spin"></i> Authenticating...</span>';
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/auth/login/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ farmer_id: user, password: pass })
+                });
+                const data = await response.json();
+
+                if (response.ok && user === 'admin') {
+                    sessionStorage.setItem('adminAuth', 'true');
+                    showDashboard();
+                } else {
+                    loginStatus.innerHTML = `<span class="error">${data.error || "Access Denied: Not an admin account"}</span>`;
+                }
+            } catch (e) {
+                loginStatus.innerHTML = '<span class="error">Server Connection Error</span>';
+            }
+        }
+
+        pdfInput.onchange = () => {
+            if (pdfInput.files.length > 0) {
+                fileNameDisplay.innerText = pdfInput.files[0].name;
+                indexBtn.disabled = false;
+            }
+        };
+
+        async function startIndexing() {
+            const file = pdfInput.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('pdf', file);
+
+            indexBtn.disabled = true;
+            statusDiv.innerHTML = '<span class="loading"><i class="fas fa-spinner fa-spin"></i> Indexing... this might take a minute.</span>';
+
+            try {
+                console.log("Sending PDF for indexing:", file.name, "Size:", file.size);
+                const response = await fetch('http://127.0.0.1:8000/api/admin/index-pdf/', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                console.log("Response status:", response.status);
+                const data = await response.json();
+                console.log("Response data:", data);
+
+                if (response.ok) {
+                    statusDiv.innerHTML = `
+                        <div class="success">
+                            <i class="fas fa-check-circle"></i> ${data.message}<br>
+                            <small>📄 Pages Found: ${data.pages_count}</small><br>
+                            <small>🧩 Chunks Created: ${data.chunks_count}</small>
+                        </div>`;
+                    fetchIndexedPdfs(); // Refresh the list of PDFs
+                    pdfInput.value = ''; // Reset file input
+                    fileNameDisplay.innerText = 'No file selected';
+                    indexBtn.disabled = true;
+                } else {
+                    const errorMsg = data.error || "Server-side error";
+                    statusDiv.innerHTML = `<span class="error"><i class="fas fa-exclamation-triangle"></i> Error ${response.status}: ${errorMsg}</span>`;
+                    indexBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error("Fetch error during indexing:", error);
+                statusDiv.innerHTML = '<span class="error">Connection Error: Could not reach backend indexing service.</span>';
+                indexBtn.disabled = false;
+            }
+        }
+
+        async function fetchUsers() {
+            const tableBody = document.getElementById('userTableBody');
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/admin/users/');
+                const data = await response.json();
+
+                if (response.ok) {
+                    if (data.length === 0) {
+                        tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No farmers registered yet.</td></tr>';
+                        return;
+                    }
+
+                    tableBody.innerHTML = data.map(user => `
+                        <tr>
+                            <td style="font-weight: 600;">${user.username}</td>
+                            <td>${user.phone || 'N/A'}</td>
+                            <td>
+                                <span class="badge ${user.is_staff ? 'badge-staff' : 'badge-user'}">
+                                    ${user.is_staff ? 'Admin' : 'Farmer'}
+                                </span>
+                            </td>
+                            <td>${user.date_joined ? new Date(user.date_joined).toLocaleDateString() : 'N/A'}</td>
+                            <td style="text-align: center;">
+                                ${user.username !== 'admin' ? `
+                                    <button class="delete-btn" onclick="deleteUser('${user.username}')" title="Remove User">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                ` : '<small style="color:#ccc">---</small>'}
+                            </td>
+                        </tr>
+                    `).join('');
+                } else {
+                    tableBody.innerHTML = `<tr><td colspan="5" class="error">Failed to load users: ${data.error}</td></tr>`;
+                }
+            } catch (e) {
+                tableBody.innerHTML = '<tr><td colspan="5" class="error">Error connecting to server.</td></tr>';
+            }
+        }
+
+        async function deleteUser(username) {
+            console.log("Attempting to delete user:", username);
+            if (!confirm(`Are you sure you want to remove user "${username}"? This action cannot be undone.`)) {
+                return;
+            }
+
+            try {
+                const url = `http://127.0.0.1:8000/api/admin/users/delete/${encodeURIComponent(username)}/`;
+                console.log("DELETE URL:", url);
+
+                const response = await fetch(url, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                console.log("Response status:", response.status);
+                const data = await response.json();
+                console.log("Response data:", data);
+
+                if (response.ok) {
+                    alert(data.message || "User deleted successfully");
+                    fetchUsers(); // Refresh the list
+                } else {
+                    alert("Error " + response.status + ": " + (data.error || "Failed to delete user"));
+                }
+            } catch (e) {
+                console.error("Deletion error:", e);
+                alert("Could not reach the server for deletion. \n\nTroubleshooting:\n1. Make sure ./start_server.sh is running.\n2. Check if your browser is blocking the request (CORS issue).\n3. Try opening this page in Chrome or Firefox.");
+            }
+        }
+        
+        async function fetchIndexedPdfs() {
+            const listElement = document.getElementById('indexedPdfsList');
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/admin/indexed-pdfs/');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    if (!data.pdfs || data.pdfs.length === 0) {
+                        listElement.innerHTML = '<li style="color: #999; text-align: center; padding: 10px;">No documents indexed yet.</li>';
+                        return;
+                    }
+                    
+                    listElement.innerHTML = data.pdfs.map(pdf => `
+                        <li style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 8px; background: #fafafa;">
+                            <span style="font-weight: 500; color: #444; word-break: break-all; margin-right: 15px;">
+                                <i class="fas fa-file-pdf" style="color: #d32f2f; margin-right: 8px;"></i>${pdf}
+                            </span>
+                            <button class="delete-btn" onclick="deleteIndexedPdf('${pdf}')" title="Remove PDF Index">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </li>
+                    `).join('');
+                } else {
+                    listElement.innerHTML = `<li class="error" style="padding: 10px;">Failed to load documents: ${data.error || 'Server error'}</li>`;
+                }
+            } catch (e) {
+                listElement.innerHTML = '<li class="error" style="padding: 10px;">Error connecting to server to fetch documents.</li>';
+            }
+        }
+        
+        async function deleteIndexedPdf(filename) {
+            if (!confirm(`Are you sure you want to delete all indexed data for "${filename}"?`)) {
+                return;
+            }
+            
+            const btn = event.currentTarget;
+            const originalIcon = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/admin/indexed-pdfs/${encodeURIComponent(filename)}/`, {
+                    method: 'DELETE',
+                });
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Refresh the list
+                    fetchIndexedPdfs();
+                    // Clear the status message to avoid confusion
+                    document.getElementById('status').innerHTML = '';
+                } else {
+                    alert(`Error: ${data.error || 'Failed to delete'}`);
+                    btn.innerHTML = originalIcon;
+                    btn.disabled = false;
+                }
+            } catch (e) {
+                alert('Connection error. Could not delete document.');
+                btn.innerHTML = originalIcon;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>
