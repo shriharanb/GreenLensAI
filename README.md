@@ -1,7 +1,9 @@
-GreenLensAI 1.0
+**GreenLensAI 1.0**
+
 GreenLensAI is an advanced, AI-powered agricultural assistant designed to empower farmers with real-time crop health monitoring, disease identification, and sustainable expert advice. By bridging the gap between cutting-edge AI and traditional farming, GreenLensAI helps ensure food security and optimized crop yields.
 
-Key Features
+**Key Features**
+
 Multilingual AI Chatbot: Conversational support in multiple languages (English, French, Spanish, Italian, Russian, and more) powered by the Qwen LLM.
 
 Crop Disease Identification: Instant identification of plant diseases using computer vision and deep learning.
@@ -14,15 +16,16 @@ Integrated Vision: Support for direct camera capture and image uploads for immed
 
 Modern Web Interface: A sleek, responsive dashboard built with a focus on user experience and accessibility.
 
-Tech Stack
-Frontend
+**Tech Stack**
+
+**Frontend**
 HTML5 & CSS3: Modern, responsive UI with custom animations.
 
 Vanilla JavaScript: Lightweight and efficient client-side logic.
 
 FontAwesome: Rich iconography for an intuitive interface.
 
-Backend
+**Backend**
 Django & DRF: Robust API management and user authentication.
 
 FastAPI: Specialized services for high-performance processing.
