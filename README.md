@@ -1,4 +1,4 @@
-# ** 🌿 GreenLensAI 1.0**
+# **GreenLensAI 1.0**
 
 GreenLensAI is an advanced, AI-powered agricultural assistant designed to empower farmers with real-time crop health monitoring, disease identification, and sustainable expert advice. By bridging the gap between cutting-edge AI and traditional farming, GreenLensAI helps ensure food security and optimized crop yields.
 
